@@ -1,0 +1,129 @@
+.heading {
+  text-align: center;
+  margin: 2vh 0;
+}
+.form {
+  padding: 0 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.input_details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.input {
+  padding: 0.5vh 0.5vw;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.label {
+  font-size: 16px;
+  color: black;
+  font-weight: 400;
+  font-weight: 600;
+}
+.info {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 0.3vh;
+}
+input[type="date"] {
+  border-bottom: 1px solid #ccc;
+}
+.select {
+  width: 100%;
+}
+.radio_group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 0.8vh;
+  gap: 20px;
+}
+.radio_option {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+input[type="radio"] {
+  transform: scale(1.2);
+}
+.submit_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+}
+.submit_btn {
+  border: none;
+  padding: 1vh 2vw;
+  border-radius: 10px;
+  color: #fff;
+  background: #0818a8;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 800;
+}
+.sub_label {
+  font-size: 16px;
+  color: black;
+  font-weight: 400;
+}
+.add_btn {
+  padding: 1vh 2vw;
+  border-radius: 10px;
+  background-color: #0818a8;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid;
+}
+@media screen and (max-width: 768px) {
+  .heading {
+    text-align: center;
+    margin: 2vh 0 3vh 0;
+    font-size: 20px;
+  }
+  .form {
+    padding: 0 5vw;
+    width: 300px;
+  }
+  .label {
+    font-size: 15px;
+  }
+  .icon {
+    font-size: 1rem;
+  }
+  .input {
+    font-size: 15px;
+  }
+  .sub_label {
+    font-size: 15px;
+  }
+  .submit_btn {
+    font-size: 15px;
+    padding: 0.7vh 7vw;
+  }
+  .add_btn {
+    padding: 0.7vh 5vw;
+    background: linear-gradient(
+      90deg,
+      hsla(191, 88%, 81%, 1) 0%,
+      hsla(260, 72%, 82%, 1) 50%,
+      hsla(247, 73%, 69%, 1) 100%
+    );
+  }
+}

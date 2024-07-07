@@ -1,0 +1,41 @@
+.header {
+  margin: 1vh 1vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.user {
+  text-transform: capitalize;
+}
+.logout_btn {
+  padding: 1vh 0.5vw;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #0818a8;
+  margin-left: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0818a8;
+  cursor: pointer;
+}
+.logout_icon {
+  font-size: 1rem;
+  transform: rotate(270deg);
+  font-weight: 700;
+}
+@media screen and (max-width: 768px) {
+  .logout_btn {
+    padding: 0.5vh 2vw;
+  }
+  .user {
+    font-size: 22px;
+    padding: 2vh 0 1vh 0;
+  }
+  .header {
+    margin: 0 3vw;
+  }
+}

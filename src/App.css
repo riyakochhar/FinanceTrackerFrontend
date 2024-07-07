@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter Tight", sans-serif;
+}
+
+@media screen and (min-width: 769px) {
+  body {
+    background: linear-gradient(
+      90deg,
+      hsla(191, 88%, 81%, 1) 0%,
+      hsla(260, 72%, 82%, 1) 50%,
+      hsla(247, 73%, 69%, 1) 100%
+    );
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #fff !important;
+  }
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  /* margin: 2vh 1vw; */
+  flex: 1;
+}
+.main-row {
+  display: flex;
+  flex-direction: row;
+  margin: 2vh 1vw;
+  flex: 1;
+}
+@media screen and (max-width: 768px) {
+  .main-row {
+    margin: 0;
+  }
+  .main {
+    padding: 0;
+  }
+}
+.col-1 {
+  flex: 5;
+  padding: 1vh 1vw;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.col-2 {
+  flex: 2;
+  background-color: #fff;
+  color: #fff;
+  padding: 1vh 1vw;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.rdrDateRangeWrapper {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.rdrDefinedRangesWrapper {
+  display: none !important;
+}
+.rdrDateDisplayWrapper {
+  display: none !important;
+}
+.date-range-container {
+  margin-top: 100px;
+  position: absolute;
+  right: 5%;
+  top: 13%;
+  z-index: 100;
+}
+
+.calendar_div {
+  width: 200px;
+}
