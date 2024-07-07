@@ -6,6 +6,7 @@ import SummaryChart from "./SummaryChart";
 import SummaryDetails from "./SummaryDetails";
 import axios from "axios";
 import AddTransaction from "./AddTransaction";
+import { API_URL } from "../../../config";
 
 function Overallsummary() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Overallsummary() {
     if (storedUser) {
       const { _id: userId } = JSON.parse(storedUser);
       const getAllTransactions = async () => {
-        let url = `http://localhost:8000/api/transactions/${userId}`;
+        let url = `${API_URL}/api/transactions/${userId}`;
 
         try {
           const response = await axios.get(url, {

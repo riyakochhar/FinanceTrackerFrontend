@@ -13,6 +13,7 @@ import { TbCategory, TbCategoryPlus } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import DatePicker from "../../components/DatePicker";
 import { formatDate } from "../../components/utility";
+import { API_URL } from "../../config";
 
 function Transactions() {
   let [details, setDetails] = useState([]);
@@ -31,7 +32,7 @@ function Transactions() {
     if (storedUser) {
       const { _id: userId } = JSON.parse(storedUser);
       const getAllTransactions = async () => {
-        let url = `http://localhost:8000/api/transactions/${userId}?from_slot=${selectedDate.from_slot}&to_slot=${selectedDate.to_slot}`;
+        let url = `${API_URL}/api/transactions/${userId}?from_slot=${selectedDate.from_slot}&to_slot=${selectedDate.to_slot}`;
 
         try {
           const response = await axios.get(url, {

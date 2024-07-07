@@ -4,6 +4,7 @@ import { AppContext } from "../../App";
 import axios from "axios";
 import styles from "./style.module.css";
 import { CiUser, CiMail, CiLock } from "react-icons/ci";
+import { API_URL } from "../../config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const Login = () => {
     try {
       let response;
       if (isSignup) {
-        response = await axios.post("http://localhost:8000/auth/signup", {
+        response = await axios.post(`${API_URL}/auth/signup`, {
           email,
           password,
           name,
@@ -31,7 +32,7 @@ const Login = () => {
           alert(response?.data?.message || "An error occurred");
         }
       } else {
-        response = await axios.post("http://localhost:8000/auth/login", {
+        response = await axios.post(`${API_URL}/auth/login`, {
           email,
           password,
         });

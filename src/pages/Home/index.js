@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Transactions from "./components/Transactions";
 import { formatDate } from "../../components/utility";
 import Overallsummary from "./components/Overallsummary";
+import { API_URL } from "../../config";
 
 function Home() {
   let [details, setDetails] = useState([]);
@@ -27,7 +28,7 @@ function Home() {
     if (storedUser) {
       const { _id: userId } = JSON.parse(storedUser);
       const getAllTransactions = async () => {
-        let url = `http://localhost:8000/api/transactions/${userId}?from_slot=${selectedDate.from_slot}&to_slot=${selectedDate.to_slot}`;
+        let url = `${API_URL}/api/transactions/${userId}?from_slot=${selectedDate.from_slot}&to_slot=${selectedDate.to_slot}`;
 
         try {
           const response = await axios.get(url, {

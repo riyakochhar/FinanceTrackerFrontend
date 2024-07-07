@@ -10,6 +10,7 @@ import { LuText } from "react-icons/lu";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { TbCategory, TbCategoryPlus } from "react-icons/tb";
 import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
+import { API_URL } from "../../../config";
 
 function AddTransaction() {
   let [close, setClose] = useState(false);
@@ -40,14 +41,11 @@ function AddTransaction() {
         subCategory = "Other";
       }
 
-      const response = await axios.post(
-        "http://localhost:8000/api/transactions",
-        {
-          userId: user._id,
-          ...formData,
-          subCategory,
-        }
-      );
+      const response = await axios.post(`${API_URL}/api/transactions`, {
+        userId: user._id,
+        ...formData,
+        subCategory,
+      });
 
       console.log("response", response);
 
