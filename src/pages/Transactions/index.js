@@ -94,17 +94,19 @@ function Transactions() {
                 </div>
               </div>
             </div>
-            <div className={styles.details_wrapper}>
-              <div className={styles.details_heading}>
-                <LuText className={styles.icon} /> Description
+            {details?.length > 0 && (
+              <div className={styles.details_wrapper}>
+                <div className={styles.details_heading}>
+                  <LuText className={styles.icon} /> Description
+                </div>
+                <div className={styles.details_heading}>
+                  <RiMoneyRupeeCircleLine className={styles.icon} /> Amount
+                </div>
+                <div className={styles.details_heading}>
+                  <TbCategoryPlus className={styles.icon} /> Category
+                </div>
               </div>
-              <div className={styles.details_heading}>
-                <RiMoneyRupeeCircleLine className={styles.icon} /> Amount
-              </div>
-              <div className={styles.details_heading}>
-                <TbCategoryPlus className={styles.icon} /> Category
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div className={styles.details_container} style={{ paddingTop: "0" }}>
