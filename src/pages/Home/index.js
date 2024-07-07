@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./css/style.module.css";
 import axios from "axios";
-import Loader from "../../components/Loader";
 import { AppContext } from "../../App";
 import Header from "../../components/Header";
 import ExpenseBarChart from "./components/ExpenseBarChart";

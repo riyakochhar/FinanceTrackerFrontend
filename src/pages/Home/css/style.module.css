@@ -133,3 +133,12 @@
     margin-bottom: 0;
   }
 }
+.no_transaction_img {
+  width: 10vmax;
+}
+.no_transaction_text {
+  font-size: 14px;
+  color: #6d6e7e;
+  font-weight: 500;
+  letter-spacing: 1px;
+}

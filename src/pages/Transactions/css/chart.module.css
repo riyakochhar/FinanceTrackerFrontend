@@ -12,4 +12,18 @@
   .axis {
     font-size: 12px;
   }
+  .no_img_found {
+    width: 40vmax;
+  }
+  .no_transaction_text {
+    font-size: 14px;
+    color: #6d6e7e;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .no_transaction_text {
+    display: none;
+  }
 }
