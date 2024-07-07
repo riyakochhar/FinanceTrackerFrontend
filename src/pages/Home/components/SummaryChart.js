@@ -43,9 +43,9 @@ function SummaryChart({ transactionDetails }) {
         <RadialBarChart
           cx="50%"
           cy="50%"
-          innerRadius="10%"
+          innerRadius="20%"
           outerRadius="100%"
-          barSize={35}
+          barSize={22}
           data={summaryData}
         >
           <RadialBar minAngle={15} background clockWise dataKey="value" />

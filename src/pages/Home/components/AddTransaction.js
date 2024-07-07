@@ -24,7 +24,9 @@ function AddTransaction() {
   let [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    setFormData({});
+    setFormData({
+      date: new Date().toISOString().slice(0, 10), // Set the current date
+    });
     setDisplay(false);
   }, [appContext.reload]);
 

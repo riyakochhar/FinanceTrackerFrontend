@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { createContext, useState } from "react";
 import "./App.css";
 import AppRoutes from "./Routes/AppRoutes";

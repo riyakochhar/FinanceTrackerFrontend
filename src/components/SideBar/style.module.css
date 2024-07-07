@@ -69,11 +69,11 @@
 }
 .active_link {
   font-weight: 700;
-  color: #326c37;
+  color: #0818a8;
 }
-.link svg {
+/* .link svg {
   color: rgba(0, 0, 0, 0.2);
-}
+} */
 
 @media screen and (max-width: 768px) {
   .link {
@@ -130,4 +130,14 @@
   line-height: 21px;
   color: #999999;
   text-align: center;
+}
+.active_card {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+.logo {
+  font-size: 1.2rem;
+  color: gray;
 }

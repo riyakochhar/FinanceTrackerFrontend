@@ -10,7 +10,7 @@
 }
 .logout_btn {
   padding: 1vh 0.5vw;
-  border-radius: 10px;
+  border-radius: 6px;
   background-color: transparent;
   border: 1px solid #0818a8;
   margin-left: 1vw;
@@ -36,6 +36,9 @@
     padding: 2vh 0 1vh 0;
   }
   .header {
-    margin: 0 3vw;
+    /* margin: 0 3vw; */
+    padding: 0 3vw;
+    margin: 0;
+    box-shadow: 0 0 10px 1px #b3b3b3;
   }
 }

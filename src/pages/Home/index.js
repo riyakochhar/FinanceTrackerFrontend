@@ -5,7 +5,7 @@ import Loader from "../../components/Loader";
 import { AppContext } from "../../App";
 import Header from "../../components/Header";
 import ExpenseBarChart from "./components/ExpenseBarChart";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Transactions from "./components/Transactions";
 import { formatDate } from "../../components/utility";
 import Overallsummary from "./components/Overallsummary";
@@ -13,7 +13,7 @@ import { API_URL } from "../../config";
 
 function Home() {
   let [details, setDetails] = useState([]);
-  let [loader, setLoader] = useState(false);
+  let [loader, setLoader] = useState(true);
   const appContext = useContext(AppContext);
   let [selectedDate, setSelectedDate] = useState({
     from_slot: formatDate(
@@ -22,6 +22,19 @@ function Home() {
     to_slot: formatDate(new Date()),
   });
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (appContext?.isMobile) {
+      console.log("path", location.pathname);
+      if (location.pathname === "/login") {
+        document.body.style.background =
+          "linear-gradient(90deg, hsla(191, 88%, 81%, 1) 0%, hsla(260, 72%, 82%, 1) 50%, hsla(247, 73%, 69%, 1) 100%);";
+      } else {
+        document.body.style.background = "#fff";
+      }
+    }
+  }, [location.pathname, appContext.isMobile]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -38,6 +51,7 @@ function Home() {
           });
           console.log(response?.data);
           setDetails(response?.data.transactions);
+          setLoader(false);
         } catch (error) {
           console.error("Error fetching transactions:", error);
         }
@@ -48,11 +62,7 @@ function Home() {
     }
   }, [navigate, appContext.reload, selectedDate]);
 
-  return loader ? (
-    <center>
-      <Loader />
-    </center>
-  ) : (
+  return (
     <div className="main-row">
       <div className={styles.main}>
         <div className={styles.sticky}>
@@ -67,13 +77,17 @@ function Home() {
                     <h3 className={styles.heading}>Category Wise Expenses</h3>
                   </div>
                   <div className={styles.subdiv}>
-                    <ExpenseBarChart transactionDetails={details} />
+                    <ExpenseBarChart
+                      transactionDetails={details}
+                      loader={loader}
+                    />
                   </div>
                 </div>
                 <div className={styles.details_container}>
                   <Transactions
                     details={details}
                     setSelectedDate={setSelectedDate}
+                    loader={loader}
                   />
                 </div>
               </div>

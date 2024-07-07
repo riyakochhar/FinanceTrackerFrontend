@@ -108,8 +108,9 @@
     padding: 0;
   }
   .heading {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 0;
+    font-weight: 600;
   }
   .details_container {
     border: none;

@@ -5,19 +5,18 @@ import Loader from "../../components/Loader";
 import { AppContext } from "../../App";
 import Header from "../../components/Header";
 import ExpenseBarChart from "./components/ExpenseBarChart";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TransactionList from "./components/TransactionList";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { LuText } from "react-icons/lu";
-import { TbCategory, TbCategoryPlus } from "react-icons/tb";
-import { MdCalendarMonth } from "react-icons/md";
+import { TbCategoryPlus } from "react-icons/tb";
 import DatePicker from "../../components/DatePicker";
 import { formatDate } from "../../components/utility";
 import { API_URL } from "../../config";
 
 function Transactions() {
   let [details, setDetails] = useState([]);
-  let [loader, setLoader] = useState(false);
+  let [loader, setLoader] = useState(true);
   const appContext = useContext(AppContext);
   let [selectedDate, setSelectedDate] = useState({
     from_slot: formatDate(
@@ -31,6 +30,7 @@ function Transactions() {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const { _id: userId } = JSON.parse(storedUser);
+      setLoader(true);
       const getAllTransactions = async () => {
         let url = `${API_URL}/api/transactions/${userId}?from_slot=${selectedDate.from_slot}&to_slot=${selectedDate.to_slot}`;
 
@@ -42,6 +42,7 @@ function Transactions() {
           });
           console.log(response?.data);
           setDetails(response?.data.transactions);
+          setLoader(false);
         } catch (error) {
           console.error("Error fetching transactions:", error);
         }
@@ -55,11 +56,21 @@ function Transactions() {
   function handleDate(from_slot, to_slot) {
     setSelectedDate({ from_slot: from_slot, to_slot: to_slot });
   }
-  return loader ? (
-    <center>
-      <Loader />
-    </center>
-  ) : (
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (appContext?.isMobile) {
+      console.log("path", location.pathname);
+      if (location.pathname === "/login") {
+        document.body.style.background =
+          "linear-gradient(90deg, hsla(191, 88%, 81%, 1) 0%, hsla(260, 72%, 82%, 1) 50%, hsla(247, 73%, 69%, 1) 100%);";
+      } else {
+        document.body.style.background = "#fff";
+      }
+    }
+  }, [location.pathname, appContext.isMobile]);
+  return (
     <div className="main-row">
       <div className={styles.main}>
         <div className={styles.sticky}>
@@ -69,7 +80,7 @@ function Transactions() {
               <h3 className={styles.heading}>Category Wise Expenses</h3>
             </div>
             <div className={styles.subdiv}>
-              <ExpenseBarChart transactionDetails={details} />
+              <ExpenseBarChart transactionDetails={details} loader={loader} />
             </div>
           </div>
           <div className={styles.details_container}>
@@ -97,7 +108,13 @@ function Transactions() {
           </div>
         </div>
         <div className={styles.details_container} style={{ paddingTop: "0" }}>
-          <TransactionList details={details} />
+          {loader ? (
+            <center>
+              <Loader />
+            </center>
+          ) : (
+            <TransactionList details={details} />
+          )}
         </div>
       </div>
     </div>

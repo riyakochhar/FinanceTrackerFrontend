@@ -10,8 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Loader from "../../../components/Loader";
 
-function ExpenseBarChart({ transactionDetails }) {
+function ExpenseBarChart({ transactionDetails, loader }) {
   const [expenseData, setExpenseData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -41,16 +42,22 @@ function ExpenseBarChart({ transactionDetails }) {
 
   return (
     <div className={styles.chart_container}>
-      <ResponsiveContainer>
-        <BarChart data={expenseData} barSize={20}>
-          <XAxis dataKey="name" className={styles.axis} />
-          <YAxis className={styles.axis} />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          {/* <Legend /> */}
-          <Bar dataKey="Expenses" fill="#daf0f7" />
-        </BarChart>
-      </ResponsiveContainer>
+      {loader ? (
+        <center>
+          <Loader />
+        </center>
+      ) : (
+        <ResponsiveContainer>
+          <BarChart data={expenseData} barSize={20}>
+            <XAxis dataKey="name" className={styles.axis} />
+            <YAxis className={styles.axis} />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            {/* <Legend /> */}
+            <Bar dataKey="Expenses" fill="#daf0f7" />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 }

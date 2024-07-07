@@ -1,4 +1,4 @@
-/* .loader {
+.loader {
   width: 20px;
   margin-top: 2vh;
   margin-bottom: 1vh;
@@ -29,22 +29,4 @@
   100% {
     transform: rotate(1turn);
   }
-} */
-.loader {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: conic-gradient(#0000 5%, rgb(98, 187, 9));
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
-  animation: s3 1s infinite linear;
-}
-
-.loader_container {
-  /* width: 100vw;
-  height: 100vh; */
-  margin: 15vh auto;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

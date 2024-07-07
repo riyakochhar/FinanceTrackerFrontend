@@ -1,12 +1,15 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
+import { VscGraph } from "react-icons/vsc";
+import { CiCircleList } from "react-icons/ci";
+import { AiOutlineLogout } from "react-icons/ai";
 
 function SideBar({ drawer }) {
   const nav_data = [
-    { title: "Dashboard", path: "/home" },
-    { title: "Transactions", path: "/transactions" },
-    { title: "Logout", path: "/login" },
+    { title: "Dashboard", path: "/home", icon: <VscGraph /> },
+    { title: "Transactions", path: "/transactions", icon: <CiCircleList /> },
+    { title: "Logout", path: "/login", icon: <AiOutlineLogout /> },
   ];
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,10 +31,18 @@ function SideBar({ drawer }) {
                   href={item?.path}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate(item.path);
+                    if (item.path === "/logout") {
+                      localStorage.clear();
+                      navigate("/login");
+                    } else {
+                      navigate(item.path);
+                    }
                   }}
                 >
-                  <span>{item?.title}</span>
+                  <div className={styles.active_card}>
+                    <p className={styles.logo}>{item?.icon} </p>
+                    <p className={styles.heading}>{item?.title}</p>
+                  </div>
                 </a>
               </div>
             );

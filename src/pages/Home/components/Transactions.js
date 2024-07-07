@@ -6,8 +6,9 @@ import { TbCategory, TbCategoryPlus } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import DatePicker from "../../../components/DatePicker/index";
 import { formatDate } from "../../../utils/formatDate";
+import Loader from "../../../components/Loader";
 
-function Transactions({ details, setSelectedDate }) {
+function Transactions({ details, setSelectedDate, loader }) {
   function handleDate(from_slot, to_slot) {
     setSelectedDate({ from_slot: from_slot, to_slot: to_slot });
   }
@@ -43,28 +44,30 @@ function Transactions({ details, setSelectedDate }) {
         </div>
       </div>
       <div className={styles.details}>
-        {details?.map(function (item, idx) {
-          return (
+        {loader ? (
+          <center>
+            <Loader />
+          </center>
+        ) : (
+          details?.map((item, idx) => (
             <div className={styles.list} key={idx}>
-              <div className={styles.details_text}>{item?.description}</div>
+              <div className={styles.details_text}>{item.description}</div>
               <div
                 className={styles.details_text}
                 style={{
-                  color: item?.type === "income" ? "green" : "red",
+                  color: item.type === "income" ? "green" : "red",
                 }}
               >
-                ₹ {item?.amount}
+                ₹ {item.amount}
               </div>
-              <div className={styles.details_text}>{item?.category}</div>
+              <div className={styles.details_text}>{item.category}</div>
+              <div className={styles.details_text}>{item.subCategory}</div>
               <div className={styles.details_text}>
-                {item?.subCategory}
-              </div>{" "}
-              <div className={styles.details_text}>
-                {formatDate(item?.date, "dd/mm/yy")}
+                {formatDate(item.date, "dd/mm/yy")}
               </div>
             </div>
-          );
-        })}
+          ))
+        )}
       </div>
     </div>
   );
